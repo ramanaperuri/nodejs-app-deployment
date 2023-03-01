@@ -1,0 +1,9 @@
+{
+  "mongodb": {
+    "url": "mongodb://0.0.0.0:27017/dockerize_nodejs_app?retryWrites=true&w=majority",
+    "options": {
+      "useNewUrlParser": true,
+      "useUnifiedTopology": true
+    }
+  }
+}

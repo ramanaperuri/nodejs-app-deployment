@@ -1,0 +1,27 @@
+version: '3'
+services:
+  # your mongoDB container specification
+  mongo_db:
+    container_name: mongo_db
+    image: mongo:4.4.4-bionic
+    restart: always
+    ports:
+      - 27027:27017
+    networks:
+      - nodejs_network
+
+  # your NodeJS app specification
+  nodejs_app:
+    container_name: nodejs_app
+    image: hidetran/dockerize-nodejs-app:0.0.1
+    ports:
+      - 8000:8000
+    volumes:
+      - ./config:/usr/src/app/config
+    networks:
+      - nodejs_network
+    depends_on:
+      - mongo_db
+networks:
+  nodejs_network:
+    driver: bridge
