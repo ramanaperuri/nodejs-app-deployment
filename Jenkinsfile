@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Build the Docker image and tag it
-                sh 'docker build -t my-nodejs-app .'
+                sh 'docker build -t my-nodejs-app:v1 .'
             }
         }
 
