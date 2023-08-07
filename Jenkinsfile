@@ -5,7 +5,7 @@ pipeline {
         stage('Clone') {
             steps {
                 // Clone the repository to the workspace
-                https://github.com/ramanaperuri/nodejs-app-deployment.git
+                git 'https://github.com/ramanaperuri/nodejs-app-deployment.git'
             }
         }
 
