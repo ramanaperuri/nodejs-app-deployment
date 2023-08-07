@@ -19,7 +19,7 @@ pipeline {
         stage('Push to AWS ECR') {
             steps {
                 // Push the Docker image to AWS ECR (if you are using ECR to store your Docker images)
-                withCredentials([awsAmazonWebServicesCredentials(credentialsId: 'aws-credentials-id', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws_cred', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                     sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 341654418433.dkr.ecr.us-east-1.amazonaws.com'
                     //sh 'docker tag your-nodejs-app:latest your-aws-account-id.dkr.ecr.your-aws-region.amazonaws.com/your-ecr-repo/your-nodejs-app:latest'
                     sh 'docker push 341654418433.dkr.ecr.us-east-1.amazonaws.com/nodeapp_dockerization:latest'
