@@ -1,7 +1,7 @@
 FROM node:alpine
 WORKDIR /usr/src/app
 
-COPY /usr/src/app/package*.json ./
+COPY /src/package*.json ./
 RUN npm install
 
 # Bundle app source
