@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Build the Docker image and tag it
-                sh 'docker build -t my-nodejs-app:latest .'
+                sh 'docker build -t my-nodejs-app:v2 .'
             }
         }
 
