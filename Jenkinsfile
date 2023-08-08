@@ -14,9 +14,12 @@ pipeline {
 
         stage('Build') {
             steps {
+                  script {
+                   dockerImage = docker.build registry
+                   }
                 // Build the Docker image and tag it
                 //sh 'docker build -t nodeapp_dockerization:latest .'
-                dockerImage = docker.build registry
+                
             }
         }
 
