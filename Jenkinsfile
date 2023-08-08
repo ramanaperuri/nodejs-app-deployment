@@ -1,5 +1,8 @@
 pipeline {
     agent any
+     environment {
+        registry = "341654418433.dkr.ecr.us-east-1.amazonaws.com/nodeapp_dockerization"
+    }
 
     stages {
         stage('Clone') {
