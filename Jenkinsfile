@@ -37,7 +37,7 @@ pipeline {
         stage('Deploy to AWS EC2') {
             steps {
                 // Connect to your EC2 instance and deploy the app
-                sshagent(credentials: ['ramanakeypair']) {
+                sshagent(credentials: ['id_rsa.pub']) {
                     sh 'ssh -o StrictHostKeyChecking=no ec2-user@54.167.250.63 "docker pull 341654418433.dkr.ecr.us-east-1.amazonaws.com/nodeapp_dockerization:latest && docker run -dit -p 8000:8000 --name my-nodejs-app-container 341654418433.dkr.ecr.us-east-1.amazonaws.com/nodeapp_dockerization:latest"'
                 }
             }
