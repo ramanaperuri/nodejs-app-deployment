@@ -49,7 +49,7 @@ pipeline {
                         def awsRegion = 'us-east-1'
                         def ecsCluster = 'test-cluster'
                         def ecsService = 'test-service'
-                        def taskDefinition = ''test_task_definition
+                        def taskDefinition = 'test_task_definition'
                         sh "aws ecs update-service --cluster ${ecsCluster} --service ${ecsService} --force-new-deployment --task-definition ${taskDefinition}"
                     }
                 } 
