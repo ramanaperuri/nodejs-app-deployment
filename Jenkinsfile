@@ -34,13 +34,25 @@ pipeline {
             }
         }
 
-        stage('Deploy to AWS EC2') {
-            steps {
-                // Connect to your EC2 instance and deploy the app
-                sshagent(credentials: ['id_rsa.pub']) {
-                    sh 'ssh -o StrictHostKeyChecking=no ec2-user@54.167.250.63 "docker pull 341654418433.dkr.ecr.us-east-1.amazonaws.com/nodeapp_dockerization:latest && docker run -dit -p 8000:8000 --name my-nodejs-app-container 341654418433.dkr.ecr.us-east-1.amazonaws.com/nodeapp_dockerization:latest"'
-                }
-            }
+         stage('Docker Run') {
+              steps{
+                   script {
+                sh 'docker run -d -p 8000:8000 --rm --name myContainer 341654418433.dkr.ecr.us-east-1.amazonaws.com/nodeapp_dockerization:latest'
+            
+      }
+    }
         }
+
+        stage('Deploy to ECS') {
+              steps {
+                    script {
+                        def awsRegion = 'us-east-1'
+                        def ecsCluster = 'test-cluster'
+                        def ecsService = 'test-service'
+                        def taskDefinition = ''test_task_definition
+                        sh "aws ecs update-service --cluster ${ecsCluster} --service ${ecsService} --force-new-deployment --task-definition ${taskDefinition}"
+                    }
+                } 
+           }
     }
 }
