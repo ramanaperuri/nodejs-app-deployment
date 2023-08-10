@@ -39,8 +39,8 @@ pipeline {
                    script {
                 sh 'docker run -d -p 8000:8000 --rm --name myContainer 341654418433.dkr.ecr.us-east-1.amazonaws.com/nodeapp_dockerization:latest'
             
-      }
-    }
+             }
+           }
         }
 
         stage('Deploy to ECS') {
