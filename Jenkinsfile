@@ -39,7 +39,7 @@ pipeline {
             steps {
                 // Connect to your EC2 instance and deploy the app
                 sshagent(credentials: ['deployment']) {
-                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@3.86.103.43 "docker pull 341654418433.dkr.ecr.us-east-1.amazonaws.com/nodeapp_dockerization:latest && docker run -dit -p 8000:8000 --name my-nodejs-app-container 341654418433.dkr.ecr.us-east-1.amazonaws.com/nodeapp_dockerization:latest"'
+                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@44.201.149.232 "docker pull 341654418433.dkr.ecr.us-east-1.amazonaws.com/nodeapp_dockerization:latest && docker run -dit -p 8000:8000 --name my-nodejs-app-container 341654418433.dkr.ecr.us-east-1.amazonaws.com/nodeapp_dockerization:latest"'
                 }
             }
         }
